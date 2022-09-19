@@ -13,4 +13,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RocheTechnicalTask.Application\RocheTechnicalTask.Application.csproj" />
+    <ProjectReference Include="..\RocheTechnicalTask.Entities\RocheTechnicalTask.Entities.csproj" />
+    <ProjectReference Include="..\RocheTechnicalTask.Repository\RocheTechnicalTask.Repository.csproj" />
+  </ItemGroup>
+
 </Project>
