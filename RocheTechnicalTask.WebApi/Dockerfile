@@ -8,6 +8,10 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["RocheTechnicalTask.WebApi/RocheTechnicalTask.WebApi.csproj", "RocheTechnicalTask.WebApi/"]
+COPY ["RocheTechnicalTask.Application/RocheTechnicalTask.Application.csproj", "RocheTechnicalTask.Application/"]
+COPY ["RocheTechnicalTask.Entities/RocheTechnicalTask.Entities.csproj", "RocheTechnicalTask.Entities/"]
+COPY ["RocheTechnicalTask.Repository/RocheTechnicalTask.Repository.csproj", "RocheTechnicalTask.Repository/"]
+COPY ["RocheTechnicalTask.Abstractions/RocheTechnicalTask.Abstractions.csproj", "RocheTechnicalTask.Abstractions/"]
 RUN dotnet restore "RocheTechnicalTask.WebApi/RocheTechnicalTask.WebApi.csproj"
 COPY . .
 WORKDIR "/src/RocheTechnicalTask.WebApi"
