@@ -1,0 +1,47 @@
+﻿<Window x:Class="RocheTechnicalTask.UIWPF.View.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RocheTechnicalTask.UIWPF.View"
+        xmlns:vm="clr-namespace:RocheTechnicalTask.UIWPF.ViewModel"
+        mc:Ignorable="d"
+        Title="Search for text:" Height="450" Width="800">
+    <Window.Resources>
+        <vm:TextFileVM x:Key="vm"/>
+    </Window.Resources>
+
+    <Grid DataContext="{StaticResource vm}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="20">
+            <TextBlock Text="Search for a text:"/>
+            <TextBox Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Margin="0,10" Content="Search" Command="{Binding SearchCommand}" CommandParameter="{Binding Text}"/>
+            <ListView ItemsSource="{Binding Files}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" Width="300" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Coincidences" Width="100" DisplayMemberBinding="{Binding Coincidences}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+        <Grid Grid.Row="1" Background="#4392f1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Margin="0,10">
+                <TextBlock Text="Total Files" FontSize="20"/>
+                <TextBlock Text="Total Coincidences" FontSize="20" />
+            </StackPanel>
+            <StackPanel Grid.Column="1" Margin="0,10">
+                <TextBlock Text="{Binding TotalFiles}" FontSize="20"/>
+                <TextBlock Text="{Binding TotalCoincidences}" FontSize="20" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

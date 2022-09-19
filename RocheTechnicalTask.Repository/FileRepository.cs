@@ -1,4 +1,5 @@
-﻿using RocheTechnicalTask.Entities;
+﻿using Microsoft.Extensions.Configuration;
+using RocheTechnicalTask.Entities;
 using System.Text.RegularExpressions;
 
 namespace RocheTechnicalTask.Repository
@@ -24,7 +25,7 @@ namespace RocheTechnicalTask.Repository
         {
             try
             {
-                string[] files = Directory.GetFiles(sDir, "*.json", SearchOption.AllDirectories);
+                string[] files = Directory.GetFiles(sDir, "*.txt", SearchOption.AllDirectories);
 
                 foreach (var file in files)
                 {
