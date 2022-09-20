@@ -22,13 +22,11 @@ namespace RocheTechnicalTask.WebApi.Controllers
         public IActionResult Get(string sText)
         {
             var config = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json").Build();
-
             string sDir = config["SearchDirectory"];
             //Environment.CurrentDirectory;
 
             List<TextFile> textFiles = FileRepository.GetTextFilesFromDir(sDir, sText);
-
-
+            
             return Ok(textFiles);
         }
 
