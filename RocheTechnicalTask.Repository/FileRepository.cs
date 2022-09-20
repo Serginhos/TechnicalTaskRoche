@@ -16,6 +16,7 @@ namespace RocheTechnicalTask.Repository
         {
             textFiles = new List<TextFile>();
             //DirSearch(sDir, sText);
+            
             FindFiles(sDir, sText);
 
             return textFiles;

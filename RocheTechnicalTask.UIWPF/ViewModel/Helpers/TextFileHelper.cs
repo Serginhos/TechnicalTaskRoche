@@ -24,11 +24,13 @@ namespace RocheTechnicalTask.UIWPF.ViewModel.Helpers
             using (HttpClient client = new HttpClient())
             {
                 var response = await client.GetAsync(url);
-                var responseString = await response.Content.ReadAsStringAsync();
-                responseString = responseString.Trim();
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseString = await response.Content.ReadAsStringAsync();
+                    responseString = responseString.Trim();
 
-                Files = JsonConvert.DeserializeObject<List<Model.TextFile>>(responseString);
-
+                    Files = JsonConvert.DeserializeObject<List<Model.TextFile>>(responseString);
+                }
             }
 
             return Files;
